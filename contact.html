@@ -18,5 +18,68 @@
      <h2> Visit Our Website </h2>
      <p> <a href="https://www.google.com" target="_blank"> Visit Google </a> </p>
 
+     <hr>
+     <h2>Customer Registration & Order Form</h2>
+     <hr>
+
+     <form>
+        <h3>Customer Information</h3>
+        <label for="name">Full Name</label>
+        <input type="text" name="name" id="name">
+        <br><br>
+
+        <label for="email">Email Address</label>
+        <input type="memail" name="email" id="email">
+        <br><br>
+
+        <label for="pass">Password</label>
+        <input type="password" name="pass" id="pass">
+        <br><br>
+        <label for="tel">Phone Number</label>
+        <input type="tel" name="tel" id="tel">
+        <br><br>
+
+        <h3>Order Information</h3>
+        <label for="quantity">Quantity</label>
+        <input type="number" name="quantity" id="quantity">
+        <br><br>
+
+        <label for="date">Preferred Delivery Date</label>
+        <br>
+        <input type="date" name="date" id="date">
+        <br><br>
+
+        <label for="options">Select Food Item</label>
+        <br><br>
+        <select name="options" id="options">
+            <option value="veg-pizza">Veg Pizza</option>
+            <option value="cheese-burger">Cheese Burger</option>
+            <option value="white-sauce-pasta">White Sauce Pasta</option>
+            <option value="veg-grilled-sandwich">Veg Grilled Sandwich</option>
+            <option value="chocolate-brownie">Chocolate Brownie</option>
+        </select>
+        <br><br>
+
+        <h3>Payment Method</h3>
+        <input type="radio" name="pay" id="cash">Cash <br>
+        <input type="radio" name="pay" id="card">Card<br>
+        <input type="radio" name="pay" id="upi">UPI <br>
+        <br><br>
+
+        <h3>Extras</h3>
+        <input type="checkbox" name="extra-cheese" id="cheese">Extra Cheese <br>
+        <input type="checkbox" name="cold-drink" id="drink">Cold Drink <br>
+        <input type="checkbox" name="dessert" id="dessert">Dessert <br>
+        <br><br>
+
+        <h3>Delivery Instructions</h3>
+        <label for="Address">Delivery Address</label><br>
+        <textarea name="Address" id="Address" rows="5" cols="40"></textarea>
+        <br><br>
+
+        <input type="submit" value="Place order">
+        <input type="reset" value="clear form">
+     </form>
+
 </body>
 </html>
