@@ -28,3 +28,65 @@ nav a:hover{
     color: #ff6b00;
     text-decoration: underline;
 }
+
+/* Home Hero Section*/
+
+#home-hero{
+    background-image: url('/assets/image/home-bg.jpg');
+    background-repeat: no-repeat;
+    background-position:  center;
+    background-size: cover;
+    height: 650px;
+    padding: 55px 80px;
+}
+
+#home-hero h2{
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-size: 53px;
+    font-weight: 800;
+    line-height: 58px;
+    width: 650px;
+    margin-bottom: 20px;
+}
+	
+#home-hero h2 span{
+    color: #F5A300;
+}
+
+/* Home Hero Description*/
+#home-hero p{
+    color: white;
+    font-size: 18px;
+    line-height: 28px;
+    width: 420px;
+    margin-bottom: 35px;
+}
+
+/* Hero Buttons */
+.hero-buttons{
+    margin-top: 35px;
+}
+
+.hero-buttons a{
+    display: inline-block;
+    min-width: 180px;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+.order-btn{
+    background-color: #f44336;
+    color: white;
+    margin-right: 15px;
+}
+
+.menu-btn{
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
