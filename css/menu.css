@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* header */
+header{
+    background-color: #ffffff;
+    padding: 20px;
+    border-bottom: 2px solid #e5e5e5;
+}
+.logo{
+    width: 170px;
+    height: auto;
+}
+
+nav a{
+    text-decoration:none;
+    color: #333333;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 12px;
+}
+
+nav a:hover{
+    color: #ff6b00;
+    text-decoration: underline;
+}
+
+#menu-hero{
+    background-image: url('../assets/image/menu-bg.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 320px;
+    text-align: center;
+    padding-top: 65px;
+}
+#menu-hero h1{
+    font-family: "Great Vibes", cursive;
+    font-size: 56px;
+    font-weight: 400;
+    color: white;
+    text-align: right;
+    text-shadow: 2px 2px 8px rgba(255, 123, 0, 0.5);
+    margin-bottom: 10px;
+}
+
+#menu-hero p{
+    color: white;
+    text-align: right;
+    margin-bottom: 10px;
+    width: 100%;
+    font-size: small;
+}
+
+
+
+#categories{
+    background-color: #ffffff;
+    padding: 60px 80px;
+    text-align: center;
+}
+
+#categories h2{
+    font-size: 40px;
+    font-weight: 700;
+    color: #222222;
+    margin-bottom: 50px;
+    position: relative;
+    display: inline-block;
+}
+
+#categories h2{
+    font-size: 40px;
+    font-weight: 700;
+    color: #222222;
+    margin-bottom: 50px;
+    position: relative;
+    display: inline-block;
+}

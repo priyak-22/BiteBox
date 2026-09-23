@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* header */
+header{
+    background-color: #ffffff;
+    padding: 20px;
+    border-bottom: 2px solid #e5e5e5;
+}
+.logo{
+    width: 170px;
+    height: auto;
+}
+
+nav a{
+    text-decoration:none;
+    color: #333333;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 12px;
+}
+
+nav a:hover{
+    color: #ff6b00;
+    text-decoration: underline;
+}
+
+#cart-hero{
+    background-image: url('/assets/image/cart-bg.jpeg');
+    background-repeat: no-repeat;
+    background-position: 100% 80%;
+    background-size: cover;
+    height: 320px;
+    padding: 60px 80px;
+    text-align: left;
+}
+/* Cart Hero Heading */
+
+#cart-hero h1{
+    color: #ffffff;
+    font-family: "Lobster", cursive;
+    font-size: 58px;
+    font-weight: 400;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    margin-bottom: 20px;
+}
+/* Cart Hero Heading */
+
+#cart-hero h1{
+    color: #ffffff;
+    font-family: "Lobster", cursive;
+    font-size: 58px;
+    font-weight: 400;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    margin-bottom: 20px;
+}
+.divider{
+    text-align: left;
+    margin-bottom: 25px;
+}
+.divider hr{
+    display: inline-block;
+    width: 180px;
+    height: 3px;
+    background-color: #ff6b00;
+    border: none;
+    border-radius: 20px;
+    vertical-align: middle;
+}
+.divider img{
+    width: 34px;
+    height: 34px;
+    margin: 0 15px;
+    display: inline-block;
+    vertical-align: middle;
+}
+/* Cart Hero Description */
+#cart-hero p{
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 30px;
+    width: 720px;
+    text-align: left;
+    
+}
