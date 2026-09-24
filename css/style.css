@@ -90,3 +90,66 @@ nav a:hover{
     color: white;
     border: 2px solid white;
 }
+
+#features{
+    background-color: #ffffff;
+    padding: 45px 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#features h2{
+    width: 100%;
+    text-align: center;
+    font-size: 42px;
+    color: #222;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+#features h2::after{
+    content:"";
+    display: block;
+    width: 70px;
+    height: 3px;
+    background-color: #ff6b00;
+    margin: 10px auto 0;
+}
+
+#features article{
+    width: 300px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #e5e5e5;
+}
+#features article:last-child{
+    border-right:none;
+}
+
+#features article img{
+    width: 55px;
+    height: 55px;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+#features article div{
+    flex:1;
+}
+
+
+#features article h3{
+    font-size: 18px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 6px;
+}
+
+#features article p{
+    font-size:16px;
+    color: #3a3939;
+    line-height: 21px;
+    margin: 0;
+}
