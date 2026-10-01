@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 150" role="img" aria-labelledby="title desc">
+  <title id="title">BiteBox</title>
+  <desc id="desc">Bold modern BiteBox logo in orange and warm white, made for a black navigation bar.</desc>
+  <g transform="translate(10 10)">
+    <path d="M20 50 89 28l69 22v61l-69 27-69-27V50Z" fill="#ff6b00"/>
+    <path d="m20 50 69 25 69-25M89 75v63" fill="none" stroke="#fff3e8" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M52 35 88 23l37 12-36 14-37-14Z" fill="#171717" stroke="#fff3e8" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M77 34v12m8-15v14m8-17v14" stroke="#ff6b00" stroke-width="4" stroke-linecap="round"/>
+    <path d="m15 119-10 4m20 5-13 5" stroke="#ff6b00" stroke-width="5" stroke-linecap="round"/>
+    <path d="M104 89h25M104 101h18" stroke="#fff3e8" stroke-width="5" stroke-linecap="round" opacity=".95"/>
+  </g>
+  <text x="190" y="99" fill="#fff3e8" font-family="Poppins, Montserrat, Arial, sans-serif" font-size="67" font-weight="800" letter-spacing="-3">Bite</text>
+  <text x="329" y="99" fill="#ff6b00" font-family="Poppins, Montserrat, Arial, sans-serif" font-size="67" font-weight="800" letter-spacing="-3">Box</text>
+  <path d="M194 119h261" stroke="#ff6b00" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="465" cy="119" r="4" fill="#ff6b00"/>
+</svg>
