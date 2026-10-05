@@ -486,3 +486,74 @@ footer > p{
     padding:18px 0;
     font-size:15px;
 }
+
+
+/* -------------------------------------------- */
+
+@media (max-width:767px) {
+    
+    #cart-hero{
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        background: none;
+        height: 250px;
+    }
+
+    #cart-hero::before{
+        content: "";
+        position: absolute;
+        inset: -10px; 
+        z-index: -1;
+        background: url("/assets/image/cart-bg.jpeg") center 80% / cover no-repeat;
+        filter: blur(6px);
+    }
+
+    #cart-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    }
+
+    #cart-hero h1{
+        font-size: 30px;
+    }
+    .divider{
+        width: 50px;
+        display: inline;
+    }
+    .divider hr{
+        width: 70px;
+    }
+    #cart-hero p{
+        font-size: small;
+        width: 280px;
+    }
+
+
+      .main {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        padding: 20px 16px;
+    }
+
+    #shopping-cart,
+    #order-summary {
+        width: 100%;
+        margin: 0;
+    }
+
+    #shopping-cart {
+        overflow-x: auto;
+    }
+
+    #shopping-cart table {
+        min-width: 600px;
+    }
+
+    #order-summary {
+        box-sizing: border-box;
+    }
+}
