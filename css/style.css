@@ -788,6 +788,9 @@ footer > p{
 
 /* ------------------------------------------ */
 @media (max-width:767px){
+    *{
+        box-sizing: border-box;
+    }
     #home-hero{
         position: relative;
         overflow: hidden;
