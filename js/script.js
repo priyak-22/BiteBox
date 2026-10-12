@@ -1,46 +1,109 @@
-let restaurantName = "BiteBox";
-alert("welcome to " + restaurantName + "!"); 
+function calculateItemTotal(price, quantity){
+    
+    return price * quantity;
+}
 
-let customerName = prompt("Welcome to " + restaurantName + "\n\nWhat is your name?");
+let cartRows = document.querySelectorAll(
+    "#shopping-cart tbody tr"
+);
 
-alert("Hello " + customerName + "\n\nWelcome to BiteBox.");
+function calculateSubtotal() {
+    let subtotal = 0;
+    let cartRows = document.querySelectorAll("#shopping-cart tbody tr" );
 
-let exploreMenu = confirm("would you like to explore our menu?");
+    cartRows.forEach(function(row) {
+        let priceText =  row.children[1].textContent;
+        let price = parseFloat(priceText.replace("₹", "")  );
+        let quantityText = row.querySelector(".quantity-box span").textContent;
+        let quantity = parseInt(quantityText);
+        let itemTotal = calculateItemTotal(price, quantity);
+        console.log(itemTotal);
+        
+        subtotal += itemTotal;
+      
+        
+    });
 
-if(exploreMenu){
-    alert("Great! Let's explore the BiteBox menu.");
-}else{
-    alert("No problem! You can explore the menu anytime.");
+    console.log(subtotal);
+    
+    return subtotal;
+}
+
+function calculateDeliveryCharge(subtotal){
+    if (subtotal ===0){
+        return 0;
+    }
+    else if(subtotal >0 && subtotal <=499){
+        return 40;
+    }
+    else if(subtotal>500 && subtotal<=699){
+        return 30;
+    }
+    else if(subtotal>700 && subtotal<=999){
+        return 30;
+    }
+    else{
+        return 0;
+    }
+    
 }
 
 	
-let choice = prompt( "Choose a BiteBox category:\n" +
-    "1. Pizza\n" +
-    "2. Burgers\n" +
-    "3. Pasta\n" +
-    "4. Desserts"
-);
-
-switch(choice){
-    case "1":
-        alert("You selected pizza!");
-        break;
-    case "2":
-        alert("You selected burger!");
-        break;
-    case "3":
-        alert("You selected pasta");
-        break;
-    case "4":
-        alert("You selected desserts!");
-        break;
-    default:
-        alert("Invalid selection");
+function calculatePackagingCharge(subtotal) {
+    if (subtotal === 0) {
+        return 0;
+    }
+  
+    return 20;
 }
 
-let item = parseInt(prompt('enter food items:'));
-for(let i=1; i<=item; i++){
-    let food = prompt("enter food item");
-    let quantity= prompt("enter quantity for "+food);
-    console.log(food + " - Quantity: "+quantity);
+function calculateDiscount(subtotal){
+     
+    if (subtotal==0){
+        return 0;
+    }
+    else if (subtotal > 599 && subtotal<=799){
+        return subtotal * 0.10;
+    }
+    else if (subtotal > 799 && subtotal<=999){
+        return subtotal * 0.15;
+    }
+    else if (subtotal >=1000){
+        return subtotal * 0.25;
+    }
 }
+
+function calculateTotal(subtotal, deliveryCharges, packagingCharge, discount){
+    return subtotal + deliveryCharges + packagingCharge -discount;
+}
+
+function updateOrderSummary(){
+    
+
+    let subtotalElement = document.getElementById("subtotal-amount");
+    if(!subtotalElement){
+        return;
+    }
+
+    let subtotal= calculateSubtotal();
+    let deliveryCharges = calculateDeliveryCharge(subtotal);
+    let packagingCharge = calculatePackagingCharge(subtotal);
+    let discount = calculateDiscount(subtotal);
+    let totalAmount = calculateTotal(subtotal, deliveryCharges, packagingCharge, discount);
+
+
+    console.log(subtotal);
+    
+
+    document.getElementById("subtotal-amount").textContent = "₹" + subtotal.toFixed(2);
+
+    document.getElementById("delivery-amount").textContent = "₹" + deliveryCharges.toFixed(2);
+
+    document.getElementById("packaging-amount").textContent = "₹" + packagingCharge.toFixed(2);
+
+    document.getElementById("discount-amount").textContent = "₹" + discount.toFixed(2);
+
+    document.getElementById("total-amount").textContent = "₹" + totalAmount.toFixed(2);
+}
+
+updateOrderSummary();
