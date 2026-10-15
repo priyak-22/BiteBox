@@ -7,25 +7,30 @@ let cartRows = document.querySelectorAll(
     "#shopping-cart tbody tr"
 );
 
-function calculateSubtotal() {
-    let subtotal = 0;
-    let cartRows = document.querySelectorAll("#shopping-cart tbody tr" );
-
-    cartRows.forEach(function(row) {
-        let priceText =  row.children[1].textContent;
-        let price = parseFloat(priceText.replace("₹", "")  );
-        let quantityText = row.querySelector(".quantity-box span").textContent;
-        let quantity = parseInt(quantityText);
-        let itemTotal = calculateItemTotal(price, quantity);
-        console.log(itemTotal);
-        
-        subtotal += itemTotal;
+let cart =
+    JSON.parse(
       
-        
+        localStorage.getItem("biteboxCart")
+      
+    ) || [];
+
+    
+function calculateSubtotal() {
+
+    let subtotal = 0;
+
+    cart.forEach(function (item) {
+
+        let itemTotal =
+            calculateItemTotal(
+                item.price,
+                item.quantity
+            );
+
+        subtotal += itemTotal;
+
     });
 
-    console.log(subtotal);
-    
     return subtotal;
 }
 
@@ -90,9 +95,6 @@ function updateOrderSummary(){
     let packagingCharge = calculatePackagingCharge(subtotal);
     let discount = calculateDiscount(subtotal);
     let totalAmount = calculateTotal(subtotal, deliveryCharges, packagingCharge, discount);
-
-
-    console.log(subtotal);
     
 
     document.getElementById("subtotal-amount").textContent = "₹" + subtotal.toFixed(2);
@@ -107,3 +109,170 @@ function updateOrderSummary(){
 }
 
 updateOrderSummary();
+
+
+let menuContainer = document.getElementById("menu-items");
+
+if (menuContainer){
+    menuContainer.addEventListener("click", function(event){
+        let button = event.target.closest("button");
+        if(!button){
+            return;
+        }
+        if(button.textContent.includes("Add to Cart")){
+            let card = button.closest("article");
+            addToCart(card);
+        }
+
+    });
+}
+
+function addToCart(card){
+    let name=card.querySelector("h3").textContent.trim();
+    let priceText=card.querySelector(".price").textContent;
+    let price = parseFloat( priceText.replace("₹", ""));
+    let image=card.querySelector("img").getAttribute("src");
+
+    let carItem={
+        name: name,
+        price: price,
+        image:image,
+        quantity:1
+    }
+    console.log("Name:", name);
+    console.log("Price:", price);
+    console.log("Image:", image);
+    let existingItem = cart.find(function(item){
+        return item.name===name;
+    });
+
+    if(existingItem){
+        existingItem.quantity++;
+    }else{
+        cart.push(carItem);
+    }
+    localStorage.setItem("biteboxCart",JSON.stringify(cart));
+}
+
+
+localStorage.setItem("biteboxCart",JSON.stringify(cart));
+let cartBody = document.querySelector("#shopping-cart tbody");
+
+function renderCart(){
+    if (!cartBody){
+        return;
+    }
+    cartBody.innerHTML = "";
+
+     if (cart.length === 0) {
+
+        let row = document.createElement("tr");
+
+
+        row.innerHTML = `
+
+            <td colspan="5">
+
+                <div class="empty-cart">
+
+                    <h3> Your Cart is Empty</h3>
+
+                    <p>
+                        Add some delicious food
+                        from our Menu!
+                    </p>
+                    </div>
+
+            </td>
+
+        `;
+
+
+        cartBody.appendChild(row);
+
+        return;
+
+    }
+
+
+    // cart.forEach() comes here
+
+    cart.forEach(function(item, index){
+        let itemTotal = item.price * item.quantity;
+        let row = document.createElement("tr");
+          row.innerHTML = `
+    
+            <td>
+    
+                <div class="cart-item">
+    
+                    <img
+                        src="${item.image}"
+                        alt="${item.name}"
+                    >
+    
+                    <div>
+    
+                        <h3>
+                            ${item.name}
+                        </h3>
+    
+                    </div>
+    
+                </div>
+    
+            </td>
+    
+            <td>
+                ₹${item.price}
+            </td>
+              <td>
+    
+                <div class="quantity-box">
+    
+                    <button
+                        class="decrease"
+                        data-index="${index}">
+                        −
+                    </button>
+    
+                    <span>
+                        ${item.quantity}
+                    </span>
+    
+                    <button
+                        class="increase"
+                        data-index="${index}">
+                        +
+                    </button>
+    
+                </div>
+    
+            </td>
+    
+    
+            <td>
+                ₹${itemTotal.toFixed(2)}
+            </td>
+     <td>
+    
+    <a href="#" class="remove-item" data-index="${index}">
+    
+    <img src="assets/icon/delete.gif" alt="Delete" width="25">
+    
+    </a>
+    
+            </td>
+    
+        `;
+    
+    
+    
+        cartBody.appendChild(row);
+    
+    });
+}
+
+console.log("Cart:", cart);
+renderCart();
+
