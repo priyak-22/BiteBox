@@ -272,7 +272,7 @@ nav a.active {
  #menu-items article button{
     width: calc(100%- 20px);
     margin: 0 10px 12px;
-    padding: 9px 0;
+    padding: 9px 5px;
     background: #ffffff;
     color: #ff4d4d;
     border: 1px solid #ff4d4d;
@@ -289,6 +289,10 @@ nav a.active {
  #menu-items article button img{
     width: 14px;
     height: 14px;
+ }
+ #menu-items article button:hover{
+    background-color: #f24747;
+    color: #efecec;
  }
 
  #menu-items article:hover{
