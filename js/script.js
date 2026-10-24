@@ -145,7 +145,7 @@ function renderCart() {
             <td>₹${itemTotal.toFixed(2)}</td>
             <td>
                 <a href="#" class="remove-item" data-index="${index}">
-                    <img src="assets/icon/delete.gif" alt="Remove ${item.name}" width="25">
+                    <img src="assets/icon/delete.png" alt="Remove ${item.name}" width="25">
                 </a>
             </td>
         `;
@@ -153,6 +153,21 @@ function renderCart() {
         cartBody.appendChild(row);
     });
 }
+
+// ----------------------CART BADGE-----------------
+
+function updateCartCount(){
+    let cartCount = 0;
+    cart.forEach(function (item){
+        cartCount += item.quantity;
+    });
+    let cartCountElement = document.getElementById('cart-count');
+    if(cartCountElement){
+        cartCountElement.textContent = cartCount;
+    }
+}
+
+updateCartCount();
 
 //adding items to cart
 function addToCart(card) {
@@ -206,37 +221,34 @@ if (menuContainer) {
 
 //increse button
 function increaseQuantity(index) {
-    if (!cart[index]) return;
-
     cart[index].quantity++;
-    saveCart();
+    localStorage.setItem("BiteBoxCart", JSON.stringify(cart));
     renderCart();
     updateOrderSummary();
+    updateCartCount();
 }
 
 
 //decrease button
 function decreaseQuantity(index) {
-    if (!cart[index]) return;
-
-    if (cart[index].quantity > 1) {
+    if (cart[index].quantity>1){
         cart[index].quantity--;
-        saveCart();
+        localStorage.setItem("BiteBoxCart", JSON.stringify(cart));
     }
-
     renderCart();
     updateOrderSummary();
+    updateCartCount();
 }
 
 //remove items
 
 function removeFromCart(index) {
-    if (index < 0 || index >= cart.length) return;
-
     cart.splice(index, 1);
-    saveCart();
+    localStorage.setItem("biteBoxCart", JSON.stringify(cart));
+
     renderCart();
     updateOrderSummary();
+    updateCartCount();
 }
 
 
@@ -246,6 +258,7 @@ function clearCart() {
     localStorage.removeItem("biteboxCart");
     renderCart();
     updateOrderSummary();
+    updateCartCount();
 }
 
 //acccessing cart body table
@@ -411,3 +424,74 @@ if (themeButton) {
     );
 }
 loadTheme();
+
+updateCartCount();
+
+
+//---------FORM MANIPULATION----------------------
+
+let contactForm = document.querySelector(".right-column form");
+
+function showToast(message, type){
+    let toast = document.createElement("div");
+    toast.className="toast "+type;
+    toast.textContent=message;
+
+    document.body.appendChild(toast);
+    setTimeout(function(){
+        toast.classList.add("show");
+    }, 100);
+
+    setTimeout(function(){
+        toast.classList.remove("show");
+
+        setTimeout(function(){
+            toast.remove();
+        }, 300);
+    }, 3000);
+}
+
+let name=contactForm.querySelector('input[name="name"]');
+let email=contactForm.querySelector('input[name="email"]');
+let phone=contactForm.querySelector('input[name="phone"]');
+let subject=contactForm.querySelector('input[name="subject"]');
+let message=contactForm.querySelector('input[name="message"]');
+
+contactForm.addEventListener("submit", function(event){
+    event.preventDefault();
+});
+if(contactForm){
+    contactForm.addEventListener("submit", function(event){
+        event.preventDefault;
+       let name = contactForm.querySelector('input[name="name"]');
+            let email = contactForm.querySelector('input[name="email"]');
+            let phone = contactForm.querySelector('input[name="phone"]');
+            let subject = contactForm.querySelector('input[name="subject"]');
+            let message = contactForm.querySelector('textarea[name="message"]');
+            if (!name.value.trim()){
+                showToast("Please enter your name..","error");
+                return;
+            }
+    if(!email.value.trim()){
+        showToast("Please enter your email address..","email");
+        return;
+    }
+    let phonePattern = /^[6-9]\d{9}$/;
+            if (!phone.value.trim()) {
+                showToast( "⚠ Please enter your phone number.","error");
+                return;
+            }
+
+            if (!phonePattern.test(phone.value.trim())) {
+                showToast("⚠ Please enter a valid 10-digit phone number.", 
+                "error");
+                return;
+            }
+    if(!message.value.trim()){
+        showToast("Please enter your message..","error");
+        return;
+    }
+    showToast("Message sent successfully!","success");
+    contactForm.reset();
+}); 
+}

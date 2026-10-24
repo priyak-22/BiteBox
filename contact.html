@@ -25,8 +25,11 @@
             <a href="menu.html" target="_blank">Menu</a> |
             <a href="about.html" target="_blank">About</a> |
             <a href="contact.html" target="_blank">Contact</a>
-            <a href="cart.html">
-                <img src="assets/icon/cart.png" alt="cart-icon" width="22" height="22">
+          <a href="cart.html" class="cart-icon">
+                <span class="cart-wrapper">
+                    <img src="assets/icon/cart.png" alt="Cart Icon" width="22" height="22">
+                    <span id="cart-count">0</span>
+                </span>
             </a>
 
             <button type="button" id="theme-toggle" class="theme-toggle">
@@ -145,16 +148,16 @@
             <hr>
             <form>
                 <div class="form-row">
-                    <input type="text" placeholder="Your Name">
-                    <input type="email" placeholder="Your Email">
+                    <input type="text" name="name" placeholder="Your Name">
+                    <input type="email" name="email" placeholder="Your Email">
                 </div>
 
                 <div class="form-row">
-                    <input type="tel" placeholder="Phone Number">
-                    <input type="text" placeholder="Subject">
+                    <input type="tel" name="phone" placeholder="Phone Number">
+                    <input type="text" name="subject" placeholder="Subject">
                 </div>
 
-                <textarea placeholder="Your Message"></textarea>
+                <textarea name="message" placeholder="Your Message"></textarea>
                 <button>Send Message ✈</button>
             </form>
         </div>
