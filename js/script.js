@@ -101,7 +101,7 @@ function updateOrderSummary() {
 //cart updation
 function renderCart() {
     const cartBody = document.querySelector("#shopping-cart tbody");
-
+    
     // The menu page does not have a cart table.
     if (!cartBody) {
         return;
@@ -285,3 +285,129 @@ if (clearCartButton) {
 
 renderCart();
 updateOrderSummary();
+
+
+// ----------SEARCH-JS----------------------
+
+let menuCards = document.querySelectorAll("#menu-items article");
+
+let searchInput = document.getElementById("menu-search");
+let searchButton = document.getElementById("search-btn");
+
+function searchMenu(searchText){
+    let searchValue = searchText.trim().toLowerCase();
+
+    menuCards.forEach((card)=>{
+        let foodName = card.querySelector("h3").textContent.trim().toLowerCase();
+
+        if(foodName.includes(searchValue)){
+            card.style.display="";
+        }else{
+            card.style.display="none";
+        }
+    })
+}
+
+if(searchButton){
+    searchButton.addEventListener("click", function(){
+        searchMenu(searchInput.value);
+    })
+}
+
+if(searchButton){
+    searchButton.addEventListener("click", function(){
+        searchMenu(searchInput.value);
+    })
+}
+
+//==============CATEGORY FILTER===================
+
+let categoryCards = document.querySelectorAll("#categories article");
+
+function filterMenu(category){
+
+    menuCards.forEach((card)=>{
+        let cardCategory= card.dataset.category.toLowerCase();
+
+        if(cardCategory === category){
+            card.style.display='';
+        }else{
+            card.style.display = "none";
+        }
+    });
+
+}
+
+categoryCards.forEach(
+    function(card) {
+        card.addEventListener("click",()=> {
+                let category = card.querySelector("h3").textContent.trim().toLowerCase();
+                filterMenu(category);
+            }
+        );
+    }
+);
+
+// =====================TOGGLE BUTTON=============================
+
+let themeButton = document.getElementById("theme-toggle");
+
+function toggleTheme(){
+    document.body.classList.toggle("dark-theme");
+
+    let themeIcon = themeButton.querySelector(".theme-icon");
+    let themeText = themeButton.querySelector(".theme-text");
+
+    if(document.body.classList.contains("dark-theme")){
+        themeIcon.textContent="☾";
+        themeText.textContent="NIGHT MODE"
+        localStorage.setItem("biteboxTheme","dark");
+    }else{
+        themeIcon.textContent="☀";
+        themeText.textContent="DAY MODE";
+        localStorage.setItem("biteboxTheme","light");
+    }
+}
+
+
+function loadTheme(){
+    let savedTheme = localStorage.getItem("biteboxTheme");
+
+    document.body.classList.add("theme-loading");
+    if(savedTheme==="dark"){
+        document.body.classList.add("dark-theme")
+    }else{
+        document.body.classList.remove("dark-theme");
+    }
+
+    let themeIcon = themeButton.querySelector(".theme-icon");
+    let themeText = themeButton.querySelector(".theme-text");
+
+    if(themeIcon){
+        themeIcon.textContent="☾";
+
+        if(themeText){
+            themeText.textContent="NIGHT MODE";
+        }
+    }else{
+        if(themeIcon){
+            themeIcon.textContent="☀";
+        }
+        if (themeText) {
+            themeText.textContent = "DAY MODE";
+        }
+    }
+   
+    setTimeout(function () {
+        document.body.classList.remove("theme-loading");
+    }, 50);
+
+}
+
+if (themeButton) {
+     themeButton.addEventListener("click",function () {
+            toggleTheme();
+        }
+    );
+}
+loadTheme();
