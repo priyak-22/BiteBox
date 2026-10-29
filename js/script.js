@@ -451,18 +451,9 @@ function showToast(message, type){
     }, 3000);
 }
 
-let name=contactForm.querySelector('input[name="name"]');
-let email=contactForm.querySelector('input[name="email"]');
-let phone=contactForm.querySelector('input[name="phone"]');
-let subject=contactForm.querySelector('input[name="subject"]');
-let message=contactForm.querySelector('input[name="message"]');
-
-contactForm.addEventListener("submit", function(event){
-    event.preventDefault();
-});
 if(contactForm){
     contactForm.addEventListener("submit", function(event){
-        event.preventDefault;
+       event.preventDefault();
        let name = contactForm.querySelector('input[name="name"]');
             let email = contactForm.querySelector('input[name="email"]');
             let phone = contactForm.querySelector('input[name="phone"]');
@@ -495,3 +486,70 @@ if(contactForm){
     contactForm.reset();
 }); 
 }
+
+// ===================== MENU FORM =====================
+
+const addMenuBtn = document.getElementById("add-menu-btn");
+const menuModal = document.getElementById("menu-modal");
+const cancelMenuForm = document.getElementById("cancel-menu-form");
+
+addMenuBtn.addEventListener("click", function () {
+    menuModal.classList.add("show");
+});
+
+ cancelMenuForm.addEventListener("click", function () {
+    menuModal.classList.remove("show");
+});
+
+const menuForm = document.getElementById("menu-form");
+
+menuForm.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("menu-name").value;
+    const price = document.getElementById("menu-price").value;
+    const category = document.getElementById("menu-category").value;
+    const rating = document.getElementById("menu-rating").value;
+    const reviews = document.getElementById("menu-reviews").value;
+    const image = document.getElementById("menu-image").value;
+
+    console.log(name);
+    console.log(price);
+    console.log(category);
+    console.log(rating);
+    console.log(reviews);
+    console.log(image);
+
+
+    const menuItem = {
+    name: name,
+    price: price,
+    category: category,
+    rating: rating,
+    reviews: reviews,
+    image: image
+};
+
+console.log(menuItem);
+	
+const API_URL = "https://6ae1f91bbbb5412922997226.mockapi.io/menu";
+
+
+fetch(API_URL, {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(menuItem)
+})
+.then(response => response.json())
+.then(data => {
+    console.log("Menu item added:", data);
+})
+.catch(error => {
+    console.error("Error adding menu item:", error);
+});
+
+});
+

@@ -8,9 +8,9 @@
 
     <link rel="stylesheet" href="css/menu.css">
 
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="./css/dark-mode.css">
 </head>
@@ -23,7 +23,7 @@
             <a href="menu.html" target="_blank">Menu</a> |
             <a href="about.html" target="_blank">About</a> |
             <a href="contact.html" target="_blank">Contact</a>
-           <a href="cart.html" class="cart-icon">
+            <a href="cart.html" class="cart-icon">
                 <span class="cart-wrapper">
                     <img src="assets/icon/cart.png" alt="Cart Icon" width="22" height="22">
                     <span id="cart-count">0</span>
@@ -80,12 +80,71 @@
         </div>
     </section>
 
-   <div class="menu-search">
-    <input type="text" id="menu-search" placeholder="Search for dishes...">
-    <button type="button" id="search-btn">
-        <img src="./assets/icon/search.png" alt="Search" width="30" height="30">
-    </button>
-</div>
+    <div class="menu-controls">
+        <div class="menu-search">
+            <input type="text" id="menu-search" placeholder="Search for dishes...">
+            <button type="button" id="search-btn">
+                <img src="./assets/icon/search.png" alt="Search" width="30" height="30">
+            </button>
+        </div>
+        <button type="button" id="add-menu-btn"> + Add Menu Item </button>
+    </div>
+
+    <div id="menu-modal" class="menu-modal">
+      <div class="menu-modal-content">
+        <div class="modal-header">
+          <h2>Add Menu Item</h2>
+        </div>
+
+        <form id="menu-form">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="menu-name"> Menu Item Name </label>
+              <input type="text" id="menu-name" placeholder="Enter item name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="menu-price"> Price (₹) </label>
+              <input type="number" id="menu-price" placeholder="Enter price" required>
+            </div>
+
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="menu-category"> Category </label>
+              <input type="text" id="menu-category" placeholder="Enter category" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="menu-rating"> Rating (0 - 5) </label>
+              <input type="text" id="menu-rating" placeholder="★★★★★" required>
+            </div>
+
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="menu-reviews"> Number of Reviews </label>
+              <input type="number" id="menu-reviews" placeholder="Enter number of reviews" 
+              required>
+            </div>
+
+            <div class="form-group">
+              <label for="menu-image"> Image URL / Path </label>
+              <input type="text" id="menu-image" placeholder="Enter image URL or path" 
+              required>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" id="cancel-menu-form"> Cancel </button>
+            <button type="submit"> Add Menu Item </button>
+          </div>
+        </form>
+      </div>
+    </div>
 
     <section id="menu-items">
         <h2><span></span>
@@ -93,7 +152,7 @@
             <span></span>
         </h2>
         <div>
-<!-- =========================PIZZA==================================== -->
+            <!-- =========================PIZZA==================================== -->
             <article data-category="pizza">
                 <span class="tag">Bestseller</span>
                 <img src="assets/image/pizza.jpg" width="220">
@@ -127,7 +186,7 @@
                 <button><img src="assets/icon/cart.png" alt="">Add to Cart</button>
             </article>
 
-<!-- ===========================BURGER=============================== -->
+            <!-- ===========================BURGER=============================== -->
             <article data-category="burger">
                 <img src="assets/image/burger.webp" width="220">
                 <h3>Cheese Burger</h3>
@@ -161,7 +220,7 @@
             </article>
 
 
-<!-- =========================PASTA============================================= -->
+            <!-- =========================PASTA============================================= -->
             <article data-category="pasta">
                 <img src="assets/image/pasta.jpg" width="220">
                 <h3>Creamy Alfredo Pasta</h3>
@@ -189,7 +248,7 @@
                 <button><img src="assets/icon/cart.png" alt="cart">Add to Cart</button>
             </article>
 
-<!-- ===================BIRYANI==================================================== -->
+            <!-- ===================BIRYANI==================================================== -->
             <article data-category="biryani">
                 <span class="tag">Spicy</span>
                 <img src="assets/image/veg_biryani.png" width="220">
@@ -223,82 +282,82 @@
     </section>
 
 
-   <footer>
+    <footer>
         <div class="footer-container">
 
             <section>
                 <img src="assets/icon/bb.png" alt="BiteBox Logo" width="180">
                 <p> Delicious food delivered to your doorstep.
-                Fresh, fast and tasty!
-            </p>
+                    Fresh, fast and tasty!
+                </p>
 
-            <a href="#">
-                <img src="assets/icon/communication.png" alt="Facebook" width="35" height="35">
-            </a>
+                <a href="#">
+                    <img src="assets/icon/communication.png" alt="Facebook" width="35" height="35">
+                </a>
 
-            <a href="#">
-                <img src="assets/icon/instagram.png" alt="Instagram" width="35" height="35">
-            </a>
+                <a href="#">
+                    <img src="assets/icon/instagram.png" alt="Instagram" width="35" height="35">
+                </a>
 
-            <a href="#">
-                <img src="assets/icon/twitter.png" alt="Twitter" width="35" height="35">
-            </a>
+                <a href="#">
+                    <img src="assets/icon/twitter.png" alt="Twitter" width="35" height="35">
+                </a>
 
-            <a href="#">
-                <img src="assets/icon/yt.png" alt="YouTube" width="35" height="35">
-            </a>
-        </section>
+                <a href="#">
+                    <img src="assets/icon/yt.png" alt="YouTube" width="35" height="35">
+                </a>
+            </section>
 
-        <hr>
-
-
-        <section>
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="cart.html">Cart</a></li>
-            </ul>
-        </section>
-
-        <hr>
+            <hr>
 
 
-        <section>
-            <h3>Customer Service</h3>
-            <ul>
-                <li>Track Order</li>
-                <li>FAQs</li>
-                <li>Shipping Policy</li>
-                <li>Return Policy</li>
-                <li>Terms & Conditions</li>
-            </ul>
-        </section>
-        
-        <hr>
-        
-        
-        <section>
-            <h3>Contact Us</h3>
-            <p>📞 +91 98765 43210</p>
-            <p>✉ support@bitebox.com</p>
-            <p>📍 123 Food Street, Mumbai, Maharashtra 400001 </p>
-        </section>
-        
-        <hr>
-        
-        
-        <section>
-            <h3>Payment Methods</h3>
-            <img src="assets/icon/visa.png" alt="Visa" width="60">
-            <img src="assets/icon/mastercard.png" alt="MasterCard" width="60">
-            <img src="assets/icon/upi.png" alt="UPI" width="60">
-            <img src="assets/icon/paytm.png" alt="Paytm" width="60">
-        </section>
-        
-    </div>
+            <section>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                </ul>
+            </section>
+
+            <hr>
+
+
+            <section>
+                <h3>Customer Service</h3>
+                <ul>
+                    <li>Track Order</li>
+                    <li>FAQs</li>
+                    <li>Shipping Policy</li>
+                    <li>Return Policy</li>
+                    <li>Terms & Conditions</li>
+                </ul>
+            </section>
+
+            <hr>
+
+
+            <section>
+                <h3>Contact Us</h3>
+                <p>📞 +91 98765 43210</p>
+                <p>✉ support@bitebox.com</p>
+                <p>📍 123 Food Street, Mumbai, Maharashtra 400001 </p>
+            </section>
+
+            <hr>
+
+
+            <section>
+                <h3>Payment Methods</h3>
+                <img src="assets/icon/visa.png" alt="Visa" width="60">
+                <img src="assets/icon/mastercard.png" alt="MasterCard" width="60">
+                <img src="assets/icon/upi.png" alt="UPI" width="60">
+                <img src="assets/icon/paytm.png" alt="Paytm" width="60">
+            </section>
+
+        </div>
         <p> © 2026 BiteBox. All Rights Reserved. </p>
 
     </footer>
